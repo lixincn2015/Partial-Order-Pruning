@@ -1,0 +1,633 @@
+layer {
+  name: "data"
+  type: "ImageData"
+  top: "data"
+  top: "label"
+  include {
+    phase: TEST
+  }
+  transform_param {
+    scale: 0.00800000037998
+    mirror: false
+    crop_size: 224
+    mean_value: 104.0
+    mean_value: 117.0
+    mean_value: 123.0
+  }
+  image_data_param {
+    source: "/home/vip/dataset/imagenet/ILSVRC2012_val_256xN_list.txt"
+    batch_size: 100
+    shuffle: false
+  }
+}
+layer {
+  name: "conv1"
+  type: "Convolution"
+  bottom: "data"
+  top: "conv1"
+  convolution_param {
+    num_output: 32
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "conv1/relu"
+  type: "ReLU"
+  bottom: "conv1"
+  top: "conv1"
+}
+layer {
+  name: "conv2"
+  type: "Convolution"
+  bottom: "conv1"
+  top: "conv2"
+  convolution_param {
+    num_output: 64
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "conv2/relu"
+  type: "ReLU"
+  bottom: "conv2"
+  top: "conv2"
+}
+layer {
+  name: "res2.1.conv1"
+  type: "Convolution"
+  bottom: "conv2"
+  top: "res2.1.conv1"
+  convolution_param {
+    num_output: 64
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "res2.1.conv1/relu"
+  type: "ReLU"
+  bottom: "res2.1.conv1"
+  top: "res2.1.conv1"
+}
+layer {
+  name: "res2.1.conv2"
+  type: "Convolution"
+  bottom: "res2.1.conv1"
+  top: "res2.1.conv2"
+  convolution_param {
+    num_output: 64
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res2.1.skipConv"
+  type: "Convolution"
+  bottom: "conv2"
+  top: "res2.1.skipConv"
+  convolution_param {
+    num_output: 64
+    bias_term: true
+    pad: 0
+    kernel_size: 1
+    stride: 2
+  }
+}
+layer {
+  name: "res2.1.sum"
+  type: "Eltwise"
+  bottom: "res2.1.conv2"
+  bottom: "res2.1.skipConv"
+  top: "res2.1.sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "res2.1.relu"
+  type: "ReLU"
+  bottom: "res2.1.sum"
+  top: "res2.1.sum"
+}
+layer {
+  name: "res2.2.conv1"
+  type: "Convolution"
+  bottom: "res2.1.sum"
+  top: "res2.2.conv1"
+  convolution_param {
+    num_output: 64
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res2.2.conv1/relu"
+  type: "ReLU"
+  bottom: "res2.2.conv1"
+  top: "res2.2.conv1"
+}
+layer {
+  name: "res2.2.conv2"
+  type: "Convolution"
+  bottom: "res2.2.conv1"
+  top: "res2.2.conv2"
+  convolution_param {
+    num_output: 64
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res2.2.sum"
+  type: "Eltwise"
+  bottom: "res2.2.conv2"
+  bottom: "res2.1.sum"
+  top: "res2.2.sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "res2.2.relu"
+  type: "ReLU"
+  bottom: "res2.2.sum"
+  top: "res2.2.sum"
+}
+layer {
+  name: "res2.3.conv1"
+  type: "Convolution"
+  bottom: "res2.2.sum"
+  top: "res2.3.conv1"
+  convolution_param {
+    num_output: 64
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res2.3.conv1/relu"
+  type: "ReLU"
+  bottom: "res2.3.conv1"
+  top: "res2.3.conv1"
+}
+layer {
+  name: "res2.3.conv2"
+  type: "Convolution"
+  bottom: "res2.3.conv1"
+  top: "res2.3.conv2"
+  convolution_param {
+    num_output: 64
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res2.3.sum"
+  type: "Eltwise"
+  bottom: "res2.3.conv2"
+  bottom: "res2.2.sum"
+  top: "res2.3.sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "res2.3.relu"
+  type: "ReLU"
+  bottom: "res2.3.sum"
+  top: "res2.3.sum"
+}
+layer {
+  name: "res3.1.conv1"
+  type: "Convolution"
+  bottom: "res2.3.sum"
+  top: "res3.1.conv1"
+  convolution_param {
+    num_output: 128
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "res3.1.conv1/relu"
+  type: "ReLU"
+  bottom: "res3.1.conv1"
+  top: "res3.1.conv1"
+}
+layer {
+  name: "res3.1.conv2"
+  type: "Convolution"
+  bottom: "res3.1.conv1"
+  top: "res3.1.conv2"
+  convolution_param {
+    num_output: 128
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res3.1.skipConv"
+  type: "Convolution"
+  bottom: "res2.3.sum"
+  top: "res3.1.skipConv"
+  convolution_param {
+    num_output: 128
+    bias_term: true
+    pad: 0
+    kernel_size: 1
+    stride: 2
+  }
+}
+layer {
+  name: "res3.1.sum"
+  type: "Eltwise"
+  bottom: "res3.1.conv2"
+  bottom: "res3.1.skipConv"
+  top: "res3.1.sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "res3.1.relu"
+  type: "ReLU"
+  bottom: "res3.1.sum"
+  top: "res3.1.sum"
+}
+layer {
+  name: "res3.2.conv1"
+  type: "Convolution"
+  bottom: "res3.1.sum"
+  top: "res3.2.conv1"
+  convolution_param {
+    num_output: 128
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res3.2.conv1/relu"
+  type: "ReLU"
+  bottom: "res3.2.conv1"
+  top: "res3.2.conv1"
+}
+layer {
+  name: "res3.2.conv2"
+  type: "Convolution"
+  bottom: "res3.2.conv1"
+  top: "res3.2.conv2"
+  convolution_param {
+    num_output: 128
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res3.2.sum"
+  type: "Eltwise"
+  bottom: "res3.2.conv2"
+  bottom: "res3.1.sum"
+  top: "res3.2.sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "res3.2.relu"
+  type: "ReLU"
+  bottom: "res3.2.sum"
+  top: "res3.2.sum"
+}
+layer {
+  name: "res3.3.conv1"
+  type: "Convolution"
+  bottom: "res3.2.sum"
+  top: "res3.3.conv1"
+  convolution_param {
+    num_output: 128
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res3.3.conv1/relu"
+  type: "ReLU"
+  bottom: "res3.3.conv1"
+  top: "res3.3.conv1"
+}
+layer {
+  name: "res3.3.conv2"
+  type: "Convolution"
+  bottom: "res3.3.conv1"
+  top: "res3.3.conv2"
+  convolution_param {
+    num_output: 128
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res3.3.sum"
+  type: "Eltwise"
+  bottom: "res3.3.conv2"
+  bottom: "res3.2.sum"
+  top: "res3.3.sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "res3.3.relu"
+  type: "ReLU"
+  bottom: "res3.3.sum"
+  top: "res3.3.sum"
+}
+layer {
+  name: "res4.1.conv1"
+  type: "Convolution"
+  bottom: "res3.3.sum"
+  top: "res4.1.conv1"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 2
+  }
+}
+layer {
+  name: "res4.1.conv1/relu"
+  type: "ReLU"
+  bottom: "res4.1.conv1"
+  top: "res4.1.conv1"
+}
+layer {
+  name: "res4.1.conv2"
+  type: "Convolution"
+  bottom: "res4.1.conv1"
+  top: "res4.1.conv2"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res4.1.skipConv"
+  type: "Convolution"
+  bottom: "res3.3.sum"
+  top: "res4.1.skipConv"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    pad: 0
+    kernel_size: 1
+    stride: 2
+  }
+}
+layer {
+  name: "res4.1.sum"
+  type: "Eltwise"
+  bottom: "res4.1.conv2"
+  bottom: "res4.1.skipConv"
+  top: "res4.1.sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "res4.1.relu"
+  type: "ReLU"
+  bottom: "res4.1.sum"
+  top: "res4.1.sum"
+}
+layer {
+  name: "res4.2.conv1"
+  type: "Convolution"
+  bottom: "res4.1.sum"
+  top: "res4.2.conv1"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res4.2.conv1/relu"
+  type: "ReLU"
+  bottom: "res4.2.conv1"
+  top: "res4.2.conv1"
+}
+layer {
+  name: "res4.2.conv2"
+  type: "Convolution"
+  bottom: "res4.2.conv1"
+  top: "res4.2.conv2"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res4.2.sum"
+  type: "Eltwise"
+  bottom: "res4.2.conv2"
+  bottom: "res4.1.sum"
+  top: "res4.2.sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "res4.2.relu"
+  type: "ReLU"
+  bottom: "res4.2.sum"
+  top: "res4.2.sum"
+}
+layer {
+  name: "res4.3.conv1"
+  type: "Convolution"
+  bottom: "res4.2.sum"
+  top: "res4.3.conv1"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res4.3.conv1/relu"
+  type: "ReLU"
+  bottom: "res4.3.conv1"
+  top: "res4.3.conv1"
+}
+layer {
+  name: "res4.3.conv2"
+  type: "Convolution"
+  bottom: "res4.3.conv1"
+  top: "res4.3.conv2"
+  convolution_param {
+    num_output: 256
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res4.3.sum"
+  type: "Eltwise"
+  bottom: "res4.3.conv2"
+  bottom: "res4.2.sum"
+  top: "res4.3.sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "res4.3.relu"
+  type: "ReLU"
+  bottom: "res4.3.sum"
+  top: "res4.3.sum"
+}
+layer {
+  name: "res4.4.conv1"
+  type: "Convolution"
+  bottom: "res4.3.sum"
+  top: "res4.4.conv1"
+  convolution_param {
+    num_output: 512
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res4.4.conv1/relu"
+  type: "ReLU"
+  bottom: "res4.4.conv1"
+  top: "res4.4.conv1"
+}
+layer {
+  name: "res4.4.conv2"
+  type: "Convolution"
+  bottom: "res4.4.conv1"
+  top: "res4.4.conv2"
+  convolution_param {
+    num_output: 512
+    bias_term: true
+    pad: 1
+    kernel_size: 3
+    stride: 1
+  }
+}
+layer {
+  name: "res4.4.skipConv"
+  type: "Convolution"
+  bottom: "res4.3.sum"
+  top: "res4.4.skipConv"
+  convolution_param {
+    num_output: 512
+    bias_term: true
+    pad: 0
+    kernel_size: 1
+    stride: 1
+  }
+}
+layer {
+  name: "res4.4.sum"
+  type: "Eltwise"
+  bottom: "res4.4.conv2"
+  bottom: "res4.4.skipConv"
+  top: "res4.4.sum"
+  eltwise_param {
+    operation: SUM
+  }
+}
+layer {
+  name: "res4.4.relu"
+  type: "ReLU"
+  bottom: "res4.4.sum"
+  top: "res4.4.sum"
+}
+layer {
+  name: "pool5"
+  type: "Pooling"
+  bottom: "res4.4.sum"
+  top: "pool5"
+  pooling_param {
+    pool: AVE
+    kernel_size: 7
+    stride: 1
+  }
+}
+layer {
+  name: "fc"
+  type: "InnerProduct"
+  bottom: "pool5"
+  top: "fc"
+  inner_product_param {
+    num_output: 1000
+    bias_term: true
+  }
+}
+layer {
+  name: "accuracy/top-1"
+  type: "Accuracy"
+  bottom: "fc"
+  bottom: "label"
+  top: "accuracy/top-1"
+  accuracy_param {
+    top_k: 1
+  }
+}
+layer {
+  name: "accuracy/top-5"
+  type: "Accuracy"
+  bottom: "fc"
+  bottom: "label"
+  top: "accuracy/top-5"
+  accuracy_param {
+    top_k: 5
+  }
+}
