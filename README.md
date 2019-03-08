@@ -1,7 +1,7 @@
 # Partial-Order-Pruning
 Partial Order Pruning: for  Best Speed/Accuracy Trade-off in Neural Architecture Search
 
-
+![New state-of-the-art real-time segmentation models.](//github.com/lixincn2015/Partial-Order-Pruning/blob/master/Table_3.PNG)
 snapshots:
 
 df1.caffemodel
