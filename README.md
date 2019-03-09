@@ -44,7 +44,7 @@ Many thanks to NCNN(https://github.com/Tencent/ncnn), a high-performance neural 
 
 ***
 
-## Snapshots:
+## Snapshots
 
 欢迎使用“东风”系列模型，万事俱备，只欠东风！
 
@@ -78,7 +78,9 @@ https://drive.google.com/open?id=1FtqRSEN90ynTgMeGH3ee5DC8ubvSHZ3z
 df-lite_seg_mergebn.caffemodel
 https://drive.google.com/open?id=1se9wAkZFyNGYInjrhtXTMIZy39ucMaDu
 
-##Citation
+***
+
+## Citation
 
 If Dongfeng networks are useful for your research, please consider citing:
 	@inproceedings{li2019partial,
@@ -91,7 +93,7 @@ If Dongfeng networks are useful for your research, please consider citing:
 	year = {2019}
 	}
 
-##Questions
+## Questions
 
 Please contact 'xin.li@uisee.com'
 
