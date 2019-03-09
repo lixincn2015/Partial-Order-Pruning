@@ -86,9 +86,9 @@ If Dongfeng networks are useful for your research, please consider citing:
 
 	@inproceedings{li2019partial,
 	author = {Xin Li,
-			Yiming Zhou,
-			Zheng Pan,
-			Jiashi Feng},
+		Yiming Zhou,
+		Zheng Pan,
+		Jiashi Feng},
 	title = {Partial Order Pruning: for Best Speed/Accuracy Trade-off in Neural Architecture Search},
 	booktitle = {Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
 	year = {2019}
