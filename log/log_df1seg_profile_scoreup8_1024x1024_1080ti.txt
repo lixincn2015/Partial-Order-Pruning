@@ -1,0 +1,63 @@
+Building and running a GPU inference engine for prototxt/df1seg_mergebn_caffetime.prototxt
+Half2 support requested on hardware without native FP16 support, performance will be negatively affected.
+Bindings after deserializing:
+Binding 0 (data): Input.
+Binding 1 (Decoder_score.up8): Output.
+conv1 + conv1/relu                       0.173ms
+conv2 + conv2/relu                       0.263ms
+res2.1.conv1 + res2.1.conv1/relu         0.157ms
+res2.1.conv2                             0.090ms
+res2.1.skipConv + res2.1.sum + res2.1.re 0.073ms
+res2.2.conv1 + res2.2.conv1/relu         0.090ms
+res2.2.conv2 + res2.2.sum + res2.2.relu  0.096ms
+res2.3.conv1 + res2.3.conv1/relu         0.090ms
+res2.3.conv2 + res2.3.sum + res2.3.relu  0.096ms
+res3.1.conv1 + res3.1.conv1/relu         0.090ms
+res3.1.conv2                             0.082ms
+res3.1.skipConv + res3.1.sum + res3.1.re 0.035ms
+res3.2.conv1 + res3.2.conv1/relu         0.082ms
+res3.2.conv2 + res3.2.sum + res3.2.relu  0.085ms
+res3.3.conv1 + res3.3.conv1/relu         0.082ms
+res3.3.conv2 + res3.3.sum + res3.3.relu  0.086ms
+res4.1.conv1 + res4.1.conv1/relu         0.116ms
+res4.1.conv2                             0.092ms
+res4.1.skipConv + res4.1.sum + res4.1.re 0.035ms
+res4.2.conv1 + res4.2.conv1/relu         0.091ms
+res4.2.conv2 + res4.2.sum + res4.2.relu  0.094ms
+res4.3.conv1 + res4.3.conv1/relu         0.092ms
+res4.3.conv2 + res4.3.sum + res4.3.relu  0.095ms
+res4.4.conv1 + res4.4.conv1/relu         0.158ms
+res4.4.conv2                             0.282ms
+res4.4.skipConv + res4.4.sum + res4.4.re 0.055ms
+psp.pool1                                0.033ms
+psp.pool1.conv + psp.pool1.conv/relu     0.019ms
+BiInterpolationPSP1_1                    0.029ms
+psp.pool2                                0.021ms
+psp.pool2.conv + psp.pool2.conv/relu     0.019ms
+BiInterpolationPSP1_2                    0.028ms
+psp.pool3                                0.018ms
+psp.pool3.conv + psp.pool3.conv/relu     0.018ms
+BiInterpolationPSP1_3                    0.027ms
+psp.pool4                                0.015ms
+psp.pool4.conv + psp.pool4.conv/relu     0.020ms
+BiInterpolationPSP1_4                    0.028ms
+psp.pool1.interp copy                    0.006ms
+psp.pool2.interp copy                    0.005ms
+psp.pool3.interp copy                    0.006ms
+psp.pool4.interp copy                    0.006ms
+psp.concat.conv + psp.concat.conv/relu   0.557ms
+Decoder_wc3 + Decoder_wc3/relu           0.022ms
+Decoder_wc4 + Decoder_wc4/relu           0.028ms
+Decoder_wc5 + Decoder_wc5/relu           0.043ms
+Decoder4_4.proj + Decoder4_4.proj/relu   0.013ms
+Decoder4_4.proj/up2                      0.272ms
+Decoder4_4.proj/up2 copy                 0.004ms
+Decoder4_4.conv1 + Decoder4_4.conv1/relu 0.026ms
+Decoder3_3.proj + Decoder3_3.proj/relu   0.013ms
+Decoder3_3.proj/up2                      0.207ms
+Decoder3_3.proj/up2 copy                 0.006ms
+Decoder3_3.conv1 + Decoder3_3.conv1/relu 0.041ms
+Decoder_score                            0.033ms
+Decoder_score.up8                        1.150ms
+Time over all layers: 5.490ms
+Done.

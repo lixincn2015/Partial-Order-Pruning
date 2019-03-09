@@ -1,7 +1,42 @@
 # Partial-Order-Pruning
-Partial Order Pruning: for  Best Speed/Accuracy Trade-off in Neural Architecture Search
+Partial Order Pruning: for  Best Speed/Accuracy Trade-off in Neural Architecture Search, CVPR 2019
 
-![New state-of-the-art real-time segmentation models.](//github.com/lixincn2015/Partial-Order-Pruning/blob/master/Table_3.PNG)
+Abstract:
+Achieving good speed and accuracy trade-off on target platform is very important in deploying deep neural networks. Most existing automatic architecture search approaches only pursue high performance but ignores such an important factor. In this work, we propose an algorithm "Partial Order Pruning" to prune architecture search space with partial order assumption, quickly lift the boundary of speed/accuracy trade-off on target platform, and automatically search the architecture with the best speed and accuracy trade-off. Our algorithm explicitly take profile information about the inference speed on target platform into consideration. With the proposed algorithm, we present several "Dongfeng(东风)" networks that provide high accuracy and fast inference speed on various application GPU platforms. By further searching decoder architecture, our DF-Seg real-time segmentation models yields state-of-the-art speed/accuracy trade-off on both embedded device and high-end GPU.
+
+
+1.We conduct backbone architecture searching experiments on TX2:
+|---------------------------------------------------|
+| 	模型(Model)		|	ImageNet Val. Top-1 Acc.	|
+| 	东风一(DF1)		|			69.78%				|
+| 	东风二(DF2)		|			73.92%				|
+| 	东风二甲(DF2A)	|			76.00%				|
+|---------------------------------------------------|
+
+2.With our Dongfeng backbone network, we conduct decoder architecture search experiments on 1080Ti and TX2:
+|---------------------------------------------------------------------------------------------|
+| 模型(Model)	| Cityscapes mIoU (Val/Test) | FPS(1080Ti/TensorRT-3.0.4)| FPS(Titan X/Caffe) |
+| Resolution    |        1024x2048           |  1024x2048  |  1024x1024  |      1024x2048     |
+|---------------------------------------------------------------------------------------------|
+| DFlite-Seg-d8 |        71.7/-              |    157.4    |    263.4    |        45.7        |
+| DF1-Seg-d8    |        72.4/71.4           |    136.9    |    232.6    |        40.2        |
+| DFlite-Seg    |        73.4/-              |    118.4    |    202.5    |        33.8        |
+| DF1-Seg       |        74.1/73.0           |    106.1    |    182.1    |        30.7        | 
+| DF2-Seg1      |        75.9/74.8           |    67.2     |      -      |        20.5        |
+| DF2-Seg2      |        76.9/75.3           |    56.3     |      -      |        17.7        |
+|---------------------------------------------------------------------------------------------|
+
+3.Dongfeng models are designed for GPU platforms. We further conduct backbone and decoder architecture searching experiments on Snapdragon 845 CPU platform:
+|-------------------------------------------------------------------------------------|
+|			 模型(Model)	       | Cityscapes mIoU (Val/Test) | FPS(Snapdragon 845) |
+|        分辨率(Resolution)        |         1024x2048          |       640x384       |
+|-------------------------------------------------------------------------------------|
+| 基于霹雳一甲的分割网络(PL1A-Seg) |         68.7/69.1          |        52.0         |
+|-------------------------------------------------------------------------------------|
+
+
+欢迎使用“东风”系列模型，万事俱备，只欠东风！
+
 snapshots:
 
 df1.caffemodel
