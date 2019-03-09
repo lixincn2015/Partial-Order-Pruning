@@ -38,7 +38,7 @@ Achieving good speed and accuracy trade-off on target platform is very important
 |			 模型(Model)	       | Cityscapes mIoU (Val/Test) | FPS(Snapdragon 845/NCNN) |
 |:--------------------------------:|:--------------------------:|:------------------------:|
 |        分辨率(Resolution)        |         1024x2048          |       640x384            |
-| 基于霹雳一甲的分割网络(PL1A-Seg) |         68.7/69.1          |        52.0              |
+|            PL1A-Seg              |         68.7/69.1          |        52.0              |
 
 Many thanks to NCNN(https://github.com/Tencent/ncnn), a high-performance neural network inference framework optimized for the mobile platform.
 
@@ -93,6 +93,7 @@ If Dongfeng networks are useful for your research, please consider citing:
 	booktitle = {Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
 	year = {2019}
 	}
+
 
 
 ## Questions
