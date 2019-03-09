@@ -22,7 +22,7 @@ Achieving good speed and accuracy trade-off on target platform is very important
 
 2.With our Dongfeng backbone network, we conduct decoder architecture search experiments on 1080Ti and TX2:
 
-| 模型(Model)	| Cityscapes mIoU (Val/Test) | FPS(1080Ti/|TensorRT-3.0.4)| FPS(Titan X/Caffe) |
+| Model	| Cityscapes mIoU (Val/Test) | FPS(1080Ti/|TensorRT-3.0.4)| FPS(Titan X/Caffe) |
 | :------------ |:--------------------------:|:-----------:|:-----------:|:------------------:|
 | Resolution    |        1024x2048           |  1024x2048  |  1024x1024  |      1024x2048     |
 | DFlite-Seg-d8 |        71.7/-              |    157.4    |    263.4    |        45.7        |
@@ -35,9 +35,9 @@ Achieving good speed and accuracy trade-off on target platform is very important
 
 3.Dongfeng models are designed for GPU platforms. We further conduct backbone and decoder architecture searching experiments on Snapdragon 845 CPU platform:
 
-|			 模型(Model)	       | Cityscapes mIoU (Val/Test) | FPS(Snapdragon 845/NCNN) |
+|			 Model	       | Cityscapes mIoU (Val/Test) | FPS(Snapdragon 845/NCNN) |
 |:--------------------------------:|:--------------------------:|:------------------------:|
-|        分辨率(Resolution)        |         1024x2048          |       640x384            |
+|        Resolution        |         1024x2048          |       640x384            |
 |            PL1A-Seg              |         68.7/69.1          |        52.0              |
 
 Many thanks to NCNN(https://github.com/Tencent/ncnn), a high-performance neural network inference framework optimized for the mobile platform.
@@ -78,7 +78,6 @@ https://drive.google.com/open?id=1FtqRSEN90ynTgMeGH3ee5DC8ubvSHZ3z
 df-lite_seg_mergebn.caffemodel
 https://drive.google.com/open?id=1se9wAkZFyNGYInjrhtXTMIZy39ucMaDu
 
-***
 
 ## Citation
 
