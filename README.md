@@ -48,7 +48,6 @@ Many thanks to NCNN(https://github.com/Tencent/ncnn), a high-performance neural 
 
 欢迎使用“东风”系列模型，万事俱备，只欠东风！
 
-
 df1.caffemodel
 https://drive.google.com/open?id=1yA9DLSy3PEMQD3R92vKr6CEaOJ0NrOVm
 
@@ -78,3 +77,21 @@ https://drive.google.com/open?id=1FtqRSEN90ynTgMeGH3ee5DC8ubvSHZ3z
 
 df-lite_seg_mergebn.caffemodel
 https://drive.google.com/open?id=1se9wAkZFyNGYInjrhtXTMIZy39ucMaDu
+
+##Citation
+
+If Dongfeng networks are useful for your research, please consider citing:
+	@inproceedings{li2019partial,
+	author = {Xin Li,
+			Yiming Zhou,
+			Zheng Pan,
+			Jiashi Feng},
+	title = {Partial Order Pruning: for Best Speed/Accuracy Trade-off in Neural Architecture Search},
+	booktitle = {Proceedings of IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}i,
+	year = {2019}
+	}
+
+##Questions
+
+Please contact 'xin.li@uisee.com'
+
