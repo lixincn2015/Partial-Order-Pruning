@@ -24,6 +24,7 @@ Achieving good speed and accuracy trade-off on target platform is very important
 2.With our Dongfeng backbone network, we conduct decoder architecture search experiments on 1080Ti and TX2:
 
 | 模型(Model)	| Cityscapes mIoU (Val/Test) | FPS(1080Ti/TensorRT-3.0.4)| FPS(Titan X/Caffe) |
+
 | Resolution    |        1024x2048           |  1024x2048  |  1024x1024  |      1024x2048     |
 | :------------ |:--------------------------:|:-----------:|:-----------:|:------------------:|
 | DFlite-Seg-d8 |        71.7/-              |    157.4    |    263.4    |        45.7        |
