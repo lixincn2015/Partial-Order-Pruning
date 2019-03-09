@@ -1,13 +1,15 @@
 # Partial-Order-Pruning
-=======================
+
 Partial Order Pruning: for  Best Speed/Accuracy Trade-off in Neural Architecture Search, CVPR 2019
 
 ****
 
-## Abstract
+## 摘要(Abstract)
 Achieving good speed and accuracy trade-off on target platform is very important in deploying deep neural networks. Most existing automatic architecture search approaches only pursue high performance but ignores such an important factor. In this work, we propose an algorithm "Partial Order Pruning" to prune architecture search space with partial order assumption, quickly lift the boundary of speed/accuracy trade-off on target platform, and automatically search the architecture with the best speed and accuracy trade-off. Our algorithm explicitly take profile information about the inference speed on target platform into consideration. With the proposed algorithm, we present several "Dongfeng(东风)" networks that provide high accuracy and fast inference speed on various application GPU platforms. By further searching decoder architecture, our DF-Seg real-time segmentation models yields state-of-the-art speed/accuracy trade-off on both embedded device and high-end GPU.
 
 ***
+
+## 部分实验数据(Experiments)
 
 1.We conduct backbone architecture searching experiments on TX2:
 
@@ -16,6 +18,8 @@ Achieving good speed and accuracy trade-off on target platform is very important
 | 	东风一(DF1)		|			69.78%				|
 | 	东风二(DF2)		|			73.92%				|
 | 	东风二甲(DF2A)	|			76.00%				|
+
+***
 
 2.With our Dongfeng backbone network, we conduct decoder architecture search experiments on 1080Ti and TX2:
 
@@ -29,6 +33,8 @@ Achieving good speed and accuracy trade-off on target platform is very important
 | DF2-Seg1      |        75.9/74.8           |    67.2     |      -      |        20.5        |
 | DF2-Seg2      |        76.9/75.3           |    56.3     |      -      |        17.7        |
 
+***
+
 3.Dongfeng models are designed for GPU platforms. We further conduct backbone and decoder architecture searching experiments on Snapdragon 845 CPU platform:
 
 |			 模型(Model)	       | Cityscapes mIoU (Val/Test) | FPS(Snapdragon 845/NCNN) |
@@ -38,10 +44,12 @@ Achieving good speed and accuracy trade-off on target platform is very important
 
 Many thanks to NCNN(https://github.com/Tencent/ncnn), a high-performance neural network inference framework optimized for the mobile platform.
 
+***
+
+## 模型文件(Snapshots):
 
 欢迎使用“东风”系列模型，万事俱备，只欠东风！
 
-snapshots:
 
 df1.caffemodel
 https://drive.google.com/open?id=1yA9DLSy3PEMQD3R92vKr6CEaOJ0NrOVm
