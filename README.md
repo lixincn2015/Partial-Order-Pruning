@@ -1,21 +1,32 @@
 # Partial-Order-Pruning
+README
+=======================
 Partial Order Pruning: for  Best Speed/Accuracy Trade-off in Neural Architecture Search, CVPR 2019
 
-Abstract:
-Achieving good speed and accuracy trade-off on target platform is very important in deploying deep neural networks. Most existing automatic architecture search approaches only pursue high performance but ignores such an important factor. In this work, we propose an algorithm "Partial Order Pruning" to prune architecture search space with partial order assumption, quickly lift the boundary of speed/accuracy trade-off on target platform, and automatically search the architecture with the best speed and accuracy trade-off. Our algorithm explicitly take profile information about the inference speed on target platform into consideration. With the proposed algorithm, we present several "Dongfeng(东风)" networks that provide high accuracy and fast inference speed on various application GPU platforms. By further searching decoder architecture, our DF-Seg real-time segmentation models yields state-of-the-art speed/accuracy trade-off on both embedded device and high-end GPU.
+****
+
+|作者|李鑫|
+|---|---
+|E-mail|lixincn2015@gmail.com|
+
+****
+
+* [ Abstract](#Achieving good speed and accuracy trade-off on target platform is very important in deploying deep neural networks. Most existing automatic architecture search approaches only pursue high performance but ignores such an important factor. In this work, we propose an algorithm "Partial Order Pruning" to prune architecture search space with partial order assumption, quickly lift the boundary of speed/accuracy trade-off on target platform, and automatically search the architecture with the best speed and accuracy trade-off. Our algorithm explicitly take profile information about the inference speed on target platform into consideration. With the proposed algorithm, we present several "Dongfeng(东风)" networks that provide high accuracy and fast inference speed on various application GPU platforms. By further searching decoder architecture, our DF-Seg real-time segmentation models yields state-of-the-art speed/accuracy trade-off on both embedded device and high-end GPU.)
 
 
 1.We conduct backbone architecture searching experiments on TX2:
+
 | 	模型(Model)		|	ImageNet Val. Top-1 Acc.	|
-|:------------------|:-----------------------------:|
+| :---------------- |:-----------------------------:|
 | 	东风一(DF1)		|			69.78%				|
 | 	东风二(DF2)		|			73.92%				|
 | 	东风二甲(DF2A)	|			76.00%				|
 
 2.With our Dongfeng backbone network, we conduct decoder architecture search experiments on 1080Ti and TX2:
+
 | 模型(Model)	| Cityscapes mIoU (Val/Test) | FPS(1080Ti/TensorRT-3.0.4)| FPS(Titan X/Caffe) |
 | Resolution    |        1024x2048           |  1024x2048  |  1024x1024  |      1024x2048     |
-|:--------------|:--------------------------:|:-----------:|:-----------:|:------------------:|
+| :------------ |:--------------------------:|:-----------:|:-----------:|:------------------:|
 | DFlite-Seg-d8 |        71.7/-              |    157.4    |    263.4    |        45.7        |
 | DF1-Seg-d8    |        72.4/71.4           |    136.9    |    232.6    |        40.2        |
 | DFlite-Seg    |        73.4/-              |    118.4    |    202.5    |        33.8        |
@@ -24,6 +35,7 @@ Achieving good speed and accuracy trade-off on target platform is very important
 | DF2-Seg2      |        76.9/75.3           |    56.3     |      -      |        17.7        |
 
 3.Dongfeng models are designed for GPU platforms. We further conduct backbone and decoder architecture searching experiments on Snapdragon 845 CPU platform:
+
 |			 模型(Model)	       | Cityscapes mIoU (Val/Test) | FPS(Snapdragon 845/NCNN) |
 |        分辨率(Resolution)        |         1024x2048          |       640x384            |
 |:--------------------------------:|:--------------------------:|:------------------------:|
