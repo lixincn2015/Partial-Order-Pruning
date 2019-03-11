@@ -13,34 +13,33 @@ Achieving good speed and accuracy trade-off on target platform is very important
 
 1.We conduct backbone architecture searching experiments on TX2:
 
-| 	模型(Model)		|	ImageNet Val. Top-1 Acc.	|
-| :---------------- |:-----------------------------:|
-| 	东风一(DF1)		|			69.78%				|
-| 	东风二(DF2)		|			73.92%				|
-| 	东风二甲(DF2A)	|			76.00%				|
+| 	模型(Model)		|	ImageNet Val. Top-1 Acc.	| Latency(ms)/224x224|
+| :---------------- |:-----------------------------:|:------------------:|
+| 	东风一(DF1)		|			69.78%				|        2.5         |
+| 	东风二(DF2)		|			73.92%				|        5.0         |
+| 	东风二甲(DF2A)	|			76.00%				|        6.5         |
 
 
-2.With our Dongfeng backbone network, we conduct decoder architecture search experiments on 1080Ti and TX2:
+2.With our Dongfeng backbone network (searched on TX2), we conduct decoder architecture search experiments on TX2 and 1080Ti and:
 
-| Model	| Cityscapes mIoU (Val/Test) | FPS(1080Ti/|TensorRT-3.0.4)| FPS(Titan X/Caffe) |
-| :------------ |:--------------------------:|:-----------:|:-----------:|:------------------:|
-| Resolution    |        1024x2048           |  1024x2048  |  1024x1024  |      1024x2048     |
-| DFlite-Seg-d8 |        71.7/-              |    157.4    |    263.4    |        45.7        |
-| DF1-Seg-d8    |        72.4/71.4           |    136.9    |    232.6    |        40.2        |
-| DFlite-Seg    |        73.4/-              |    118.4    |    202.5    |        33.8        |
-| DF1-Seg       |        74.1/73.0           |    106.1    |    182.1    |        30.7        | 
-| DF2-Seg1      |        75.9/74.8           |    67.2     |      -      |        20.5        |
-| DF2-Seg2      |        76.9/75.3           |    56.3     |      -      |        17.7        |
+|     Model     | Cityscapes mIoU (Val/Test) | FPS(TX2/TensorRT-3.0.4) |FPS(1080Ti/|TensorRT-3.0.4)| FPS(Titan X/Caffe) |
+| :------------ |:--------------------------:|:----------:|:-----------:|:-----------:|:------------------:|
+| Resolution    |        1024x2048           |  640x384   |  1024x2048  |  1024x1024  |      1024x2048     |
+| DFlite-Seg-d8 |        71.7/-              |     -      |    157.4    |    263.4    |        45.7        |
+| DF1-Seg-d8    |        72.4/71.4           |    92.7    |    136.9    |    232.6    |        40.2        |
+| DFlite-Seg    |        73.4/-              |     -      |    118.4    |    202.5    |        33.8        |
+| DF1-Seg       |        74.1/73.0           |    71.4    |    106.1    |    182.1    |        30.7        | 
+| DF2-Seg1      |        75.9/74.8           |    44.9    |    67.2     |      -      |        20.5        |
+| DF2-Seg2      |        76.9/75.3           |    39.9    |    56.3     |      -      |        17.7        |
 
 
 3.Dongfeng models are designed for GPU platforms. We further conduct backbone and decoder architecture searching experiments on Snapdragon 845 CPU platform:
 
-|			 Model	       | Cityscapes mIoU (Val/Test) | FPS(Snapdragon 845/NCNN) |
+|			 Model	       | Cityscapes mIoU (Val/Test) | FPS(Snapdragon 845) |
 |:--------------------------------:|:--------------------------:|:------------------------:|
 |        Resolution        |         1024x2048          |       640x384            |
 |            PL1A-Seg              |         68.7/69.1          |        52.0              |
 
-Many thanks to NCNN(https://github.com/Tencent/ncnn), a high-performance neural network inference framework optimized for the mobile platform.
 
 ***
 
