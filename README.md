@@ -20,9 +20,9 @@ Achieving good speed and accuracy trade-off on target platform is very important
 | 	东风二甲(DF2A)	|			76.00%				|        6.5         |
 
 
-2.With our Dongfeng backbone network (searched on TX2), we conduct decoder architecture search experiments on TX2 and 1080Ti and:
+2.With our Dongfeng backbone network (searched on TX2), we conduct decoder architecture search experiments on both TX2 and 1080Ti:
 
-|     Model     | Cityscapes mIoU (Val/Test) | FPS(TX2/TensorRT-3.0.4) |FPS(1080Ti/|TensorRT-3.0.4)| FPS(Titan X/Caffe) |
+|     Model     | Cityscapes mIoU (Val/Test) | FPS(TX2/TensorRT-3.0.4) |FPS(1080Ti/TensorRT-3.0.4)|FPS(1080Ti/TensorRT-3.0.4)| FPS(Titan X/Caffe) |
 | :------------ |:--------------------------:|:----------:|:-----------:|:-----------:|:------------------:|
 | Resolution    |        1024x2048           |  640x384   |  1024x2048  |  1024x1024  |      1024x2048     |
 | DFlite-Seg-d8 |        71.7/-              |     -      |    157.4    |    263.4    |        45.7        |
