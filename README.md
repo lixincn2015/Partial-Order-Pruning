@@ -47,6 +47,8 @@ Achieving good speed and accuracy trade-off on target platform is very important
 
 欢迎使用“东风”系列模型，万事俱备，只欠东风！
 
+Please set weight_decay to 0.0001 during finetuning, otherwise performance will be negatively affected.
+
 df1.caffemodel
 https://drive.google.com/open?id=1yA9DLSy3PEMQD3R92vKr6CEaOJ0NrOVm
 
