@@ -13,11 +13,20 @@ Achieving good speed and accuracy trade-off on target platform is very important
 
 1.We conduct backbone architecture searching experiments on TX2:
 
-| 	模型(Model)		|	ImageNet Val. Top-1 Acc.	| Latency(ms)/224x224|
-| :---------------- |:-----------------------------:|:------------------:|
-| 	东风一(DF1)		|			69.78%				|        2.5         |
-| 	东风二(DF2)		|			73.92%				|        5.0         |
-| 	东风二甲(DF2A)	|			76.00%				|        6.5         |
+| 	模型(Model)		|	ImageNet Val. Top-1 Acc.	| Latency(ms)/224x224/batch_size=1| GPU Memory/224x224/batch_size=50 | GPU Memory/1024x1024/batch_size=1 |  FLOPS|
+| :---------------- |:-----------------------------:|:------------------:|:-----------:|:----------:|:--------------:|
+| 	东风一(DF1)		|			69.78%				|        2.5         |    1863    |    1042     |      746M      |
+| 	东风二(DF2)		|			73.92%				|        5.0         |    2867    |    1567     |      1.77G     |
+| 	东风二甲(DF2A)	|			76.00%				|        6.5         |    4844    |    2356     |      1.97G     |
+|    ResNet-18	    |           69.0%               |        4.4         |    2784    |    1397     |      1.8G      |
+|    ResNet-50      |           75.3%               |       10.6         |    9914    |    4488     |      3.8G      |
+|    ResNet-101     |           76.4%               |         -          |    14900   |    6813     |      7.6G      |
+
+Comparing to ResNet18/50/101, our Dongfeng network achieve similar accuracy with much lower latency on target platform.
+We have evaluated the GPU memory consumptions of inference with each backbone network, in BVLC_CAFFE.
+Our Dongfeng networks consumes much less GPU memory. Specifically, our DF2A has a similar accuracy with ResNet-50/101, but consumes 2x~3x less GPU memory.
+Faster inference and Less GPU memory consumption of backbone network is of great importance in saving computing resources, and enables you to better implement your fancy, sophisticated algorithm.
+
 
 
 2.With our Dongfeng backbone network (searched on TX2), we conduct decoder architecture search experiments on both TX2 and 1080Ti:
@@ -46,8 +55,10 @@ Achieving good speed and accuracy trade-off on target platform is very important
 ## Snapshots
 
 欢迎使用“东风”系列模型，万事俱备，只欠东风！
+Everything is ready, all you need is Dongfeng!
 
-Please set weight_decay to 0.0001 during finetuning, otherwise performance will be negatively affected.
+1.Please set weight_decay to 0.0001 during finetuning, otherwise performance will be negatively affected.
+2.I would recommond using DF2 instead of DF2A in dense prediction. Although its accracy on ImageNet Val. is lower, DF2 provides better segmentation accuracy in our preliminary experiments. I attribute this to the larger receptive field of DF2. I also observed that DF2 performs better then ResNet50 in segmentation accuracy, which can be attributed to the larger receptive field too.
 
 df1.caffemodel
 https://drive.google.com/open?id=1yA9DLSy3PEMQD3R92vKr6CEaOJ0NrOVm
