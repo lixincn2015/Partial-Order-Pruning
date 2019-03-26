@@ -13,7 +13,7 @@ Achieving good speed and accuracy trade-off on target platform is very important
 
 1.We conduct backbone architecture searching experiments on TX2:
 
-| 	模型(Model)		|	ImageNet Val. Top-1 Acc.	| Latency(ms)/224x224/batch_size=1| GPU Memory/224x224/batch_size=50 | GPU Memory/1024x1024/batch_size=1 |  FLOPS|
+| 	模型(Model)		|	ImageNet Val. Top-1 Acc.	| Lat.(ms)/224x224/batch_size=1| GPU Mem./224x224/batch_size=50 | GPU Mem./1024x1024/batch_size=1 |  FLOPS|
 | :---------------- |:-----------------------------:|:------------------:|:-----------:|:----------:|:--------------:|
 | 	东风一(DF1)		|			69.78%				|        2.5         |    1863    |    1042     |      746M      |
 | 	东风二(DF2)		|			73.92%				|        5.0         |    2867    |    1567     |      1.77G     |
@@ -22,10 +22,10 @@ Achieving good speed and accuracy trade-off on target platform is very important
 |    ResNet-50      |           75.3%               |       10.6         |    9914    |    4488     |      3.8G      |
 |    ResNet-101     |           76.4%               |         -          |    14900   |    6813     |      7.6G      |
 
-Comparing to ResNet18/50/101, our Dongfeng network achieve similar accuracy with much lower latency on target platform.
-We have evaluated the GPU memory consumptions of inference with each backbone network, in BVLC_CAFFE.
-Our Dongfeng networks consumes much less GPU memory. Specifically, our DF2A has a similar accuracy with ResNet-50/101, but consumes 2x~3x less GPU memory.
-Faster inference and Less GPU memory consumption of backbone network is of great importance in saving computing resources, and enables you to better implement your fancy, sophisticated algorithm.
+Comparing to ResNet18/50/101, our Dongfeng networks achieve similar accuracy with much lower latency on target platform.
+We have evaluated the GPU memory consumptions of inferencing with different backbone networks, in BVLC_CAFFE.
+Our Dongfeng networks consume much less GPU memory. Specifically, our DF2A has a similar accuracy with ResNet-50/101, but consumes 2x~3x less GPU memory.
+Faster inference and Less GPU memory consumption are of great importance in deploying, and also enables researcher to implement more fancy, sophisticated algorithm.
 
 
 
@@ -58,6 +58,7 @@ Faster inference and Less GPU memory consumption of backbone network is of great
 Everything is ready, all you need is Dongfeng!
 
 1.Please set weight_decay to 0.0001 during finetuning, otherwise performance will be negatively affected.
+
 2.I would recommond using DF2 instead of DF2A in dense prediction. Although its accracy on ImageNet Val. is lower, DF2 provides better segmentation accuracy in our preliminary experiments. I attribute this to the larger receptive field of DF2. I also observed that DF2 performs better then ResNet50 in segmentation accuracy, which can be attributed to the larger receptive field too.
 
 df1.caffemodel
