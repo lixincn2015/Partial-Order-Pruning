@@ -59,7 +59,7 @@ Everything is ready, all you need is Dongfeng!
 
 1.Please set weight_decay to 0.0001 during finetuning, otherwise performance will be negatively affected.
 
-2.I would recommond using DF2 instead of DF2A in dense prediction. Although its accracy on ImageNet Val. is lower, DF2 provides better segmentation accuracy in our preliminary experiments. I attribute this to the larger receptive field of DF2. I also observed that DF2 performs better then ResNet50 in segmentation accuracy, which can be attributed to the larger receptive field too.
+2.I would recommond using DF2 rather than DF2A in dense prediction. Although its accracy on ImageNet Val. is lower, DF2 provides better segmentation accuracy in our preliminary experiments. I attribute this to the larger receptive field of DF2. I also observed that DF2 performs better then ResNet50 in segmentation accuracy, which can be attributed to the larger receptive field too.
 
 df1.caffemodel
 https://drive.google.com/open?id=1yA9DLSy3PEMQD3R92vKr6CEaOJ0NrOVm
