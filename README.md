@@ -106,9 +106,3 @@ If Dongfeng networks are useful for your research, please consider citing:
 	year = {2019}
 	}
 
-
-
-## Questions
-
-Please contact 'xin.li@uisee.com'
-
